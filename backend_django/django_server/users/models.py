@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
-from django.core.validators import MinValueValidator, MaxValueValidator
 
 NOMBRE_ML = 100
 HABITOS_ML = 500
@@ -42,10 +41,3 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return self.email
     
-
-class EmailRequest(models.Model):
-    nombre_negocio = models.CharField(max_length=100)
-    producto = models.CharField(max_length=100)
-    objetivo = models.CharField(max_length=500)
-    tono = models.CharField(max_length=100)
-    publico_objetivo = models.CharField(max_length=100)

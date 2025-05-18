@@ -16,6 +16,6 @@ urlpatterns = [
     # path('ingresos/<int:pk>/', RetrieveUpdateDestroyIngresoView.as_view(), name='ingreso-detail'),
 
     # Presupuestos
-    path('budget/', ListCreatePresupuestoView.as_view(), name='presupuesto-list'),
+    path('budget/', ListCreatePresupuestoView.as_view(), name='presupuesto-list-create'),
     path('budget/<int:pk>/', RetrieveUpdateDestroyPresupuestoView.as_view(), name='presupuesto-detail'),
 ]
