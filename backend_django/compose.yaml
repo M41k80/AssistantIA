@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  backend:
+    image: deimosetfobos/express4
+    container_name: django_server
+    env_file:
+      - .env.docker.local
+    command: >
+      sh -c "python manage.py makemigrations &&
+             python manage.py collectstatic --noinput &&
+             python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+            #  gunicorn django_server.wsgi:application --bind 0.0.0.0:8000
+    ports:
+      - "8000:8000"
