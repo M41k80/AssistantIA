@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from datetime import datetime, time
 from .models import Tarea, Evento
 from django.utils import timezone
 
@@ -11,6 +12,8 @@ class TareaSerializer(serializers.ModelSerializer):
         exclude = ['user']
 
     def validate_fecha_limite(self, value):
+        value = value.replace(hour=23, minute=59, second=59)
+
         if value < timezone.now():
             raise serializers.ValidationError("La fecha límite no puede estar en el pasado.")
         return value
@@ -24,11 +27,19 @@ class TareaSerializer(serializers.ModelSerializer):
 class EventoSerializer(serializers.ModelSerializer):
     titulo = serializers.CharField(source='tarea.titulo', read_only=True)
     descripcion = serializers.CharField(source='tarea.descripcion', read_only=True)
+    # inicio = serializers.SerializerMethodField()
+    # fin = serializers.SerializerMethodField()
 
     class Meta:
         model = Evento
-        fields = ['id', 'inicio', 'fin', 'prioridad', 'tarea', 'titulo', 'descripcion']
-        read_only_fields = ['created_at', 'updated_at']
+        fields = ['id', 'inicio', 'fin', 'prioridad', 'tarea', 'titulo', 'descripcion', 'finalizado']
+        read_only_fields = ['created_at', 'updated_at', 'finalizado']
+
+    # def get_inicio(self, obj):
+    #     return obj.inicio.replace(tzinfo=None).isoformat(timespec='seconds')
+
+    # def get_fin(self, obj):
+    #     return obj.fin.replace(tzinfo=None).isoformat(timespec='seconds')
 
     def validate(self, data):
         inicio = data.get('inicio')

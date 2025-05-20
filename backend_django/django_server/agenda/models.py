@@ -27,4 +27,5 @@ class Evento(models.Model):
     inicio = models.DateTimeField()
     fin = models.DateTimeField()
     prioridad =  models.CharField(default='Media', choices=PRIORIDADES)
+    finalizado = models.BooleanField(default=False)
   

@@ -4,7 +4,8 @@ from agenda.views import (
     RetrieveUpdateDestroyTareaView,
     ListEventoView,
     RetrieveUpdateDestroyEventoView,
-    CrearTareaYEventoView
+    CrearTareaYEventoView,
+    ToggleEventoView
 )
 
 app_name = 'agenda'
@@ -18,5 +19,6 @@ urlpatterns = [
     path('eventos/<int:pk>/', RetrieveUpdateDestroyEventoView.as_view(), name='evento-detail'),
 
     path('crear-evento/', CrearTareaYEventoView.as_view(), name='evento-create'),
+    path('eventos/<int:pk>/toggle/', ToggleEventoView.as_view(), name='evento-toggle'),
 
 ]

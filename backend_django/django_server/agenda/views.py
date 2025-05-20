@@ -1,7 +1,9 @@
 import requests
+from datetime import datetime
 from pprint import pprint
+
 from django.conf import settings
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, ListAPIView, UpdateAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import status, APIView
@@ -126,6 +128,10 @@ class CrearTareaYEventoView(APIView):
         try:
             url = f"{settings.API_AI}/tasks/prioritize"
             response = requests.post(url, json=payload, timeout=20)
+            if response.status_code == status.HTTP_409_CONFLICT:
+                tarea.delete() 
+                return Response({"detail": "No hay hueco libre en la agenda para ese dia."},
+                            status=status.HTTP_409_CONFLICT)
             response.raise_for_status()
         except requests.RequestException as e:
             tarea.delete()  # roll back si falla
@@ -133,7 +139,7 @@ class CrearTareaYEventoView(APIView):
                             status=status.HTTP_502_BAD_GATEWAY)
 
         evento_data = response.json().get('evento')
-        evento_data["tarea"] = tarea.id  
+        evento_data["tarea"] = tarea.id
 
         evento_serializer = EventoSerializer(data=evento_data, context={'request': request})
         if not evento_serializer.is_valid():
@@ -145,3 +151,30 @@ class CrearTareaYEventoView(APIView):
 
         return Response(EventoSerializer(evento).data, status=status.HTTP_201_CREATED)
 
+
+class ToggleEventoView(UpdateAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = EventoSerializer
+    queryset = Evento.objects.all()
+    
+    def patch(self, request, *args, **kwargs):
+        user = self.request.user
+        evento = self.get_object()
+
+        if user != evento.tarea.user:
+            return Response({"detail": "No tiene permisos para editar este evento."},
+                status=status.HTTP_403_FORBIDDEN)
+        
+        evento.finalizado = not evento.finalizado
+        evento.save()
+
+        serializer = self.get_serializer(evento)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    @swagger_auto_schema(auto_schema=None)
+    def put(self, request, *args, **kwargs):
+        return Response(
+            {"detail": "Método PUT no permitido. Usá PATCH para actualizaciones parciales."},
+            status=status.HTTP_405_METHOD_NOT_ALLOWED
+        )
+    
