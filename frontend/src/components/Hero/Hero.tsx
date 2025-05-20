@@ -17,7 +17,7 @@ const Hero = () => {
           <Link href="#contacto" className="hover:text-gray-600 font-medium">
             Contacto
           </Link>
-          <Link href="/ingresar" className="hover:text-gray-600 font-medium">
+          <Link href="/login" className="hover:text-gray-600 font-medium">
             Ingresar
           </Link>
           <Link href="/registrarse" className="hover:text-gray-600 font-medium">
