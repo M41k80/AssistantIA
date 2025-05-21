@@ -1,0 +1,68 @@
+:root {
+    /* Colores base */
+    --color-background: 0 0% 100%;
+    --color-foreground: 0 0% 10%;
+
+    /* Colores de componentes */
+    --color-card: 0 0% 100%;
+    --color-card-foreground: 0 0% 10%;
+
+    --color-popover: 0 0% 100%;
+    --color-popover-foreground: 0 0% 10%;
+
+    --color-primary: 214 100% 50%;
+    --color-primary-foreground: 0 0% 100%;
+
+    --color-secondary: 210 20% 96%;
+    --color-secondary-foreground: 0 0% 10%;
+
+    --color-muted: 0 0% 96%;
+    --color-muted-foreground: 0 0% 45%;
+
+    --color-accent: 210 20% 96%;
+    --color-accent-foreground: 0 0% 10%;
+
+    --color-destructive: 0 100% 50%;
+    --color-destructive-foreground: 0 0% 100%;
+
+    --color-border: 0 0% 90%;
+    --color-input: 0 0% 90%;
+    --color-ring: 214 100% 50%;
+
+    /* Radio de bordes */
+    --radius: 0.5rem;
+
+    /* Modo oscuro */
+    @media (prefers-color-scheme: dark) {
+        --color-background: 0 0% 10%;
+        --color-foreground: 0 0% 100%;
+
+        --color-card: 0 0% 10%;
+        --color-card-foreground: 0 0% 100%;
+
+        --color-popover: 0 0% 10%;
+        --color-popover-foreground: 0 0% 100%;
+
+        --color-secondary: 0 0% 15%;
+        --color-secondary-foreground: 0 0% 100%;
+
+        --color-muted: 0 0% 15%;
+        --color-muted-foreground: 0 0% 65%;
+
+        --color-accent: 0 0% 15%;
+        --color-accent-foreground: 0 0% 100%;
+
+        --color-border: 0 0% 20%;
+        --color-input: 0 0% 20%;
+    }
+}
+
+/* Estilos base */
+* {
+    border-color: hsl(var(--color-border));
+}
+
+body {
+    background-color: hsl(var(--color-background));
+    color: hsl(var(--color-foreground));
+}
