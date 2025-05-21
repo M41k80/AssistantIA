@@ -1,5 +1,5 @@
 import requests
-import pprint
+from django.db import transaction
 from django.conf import settings
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import IsAuthenticated
@@ -75,23 +75,8 @@ class ListCreatePresupuestoView(ListCreateAPIView):
     serializer_class = PresupuestoSerializer
 
     def get_queryset(self):
-        user = self.request.user
-        if user.is_anonymous:
-            return Presupuesto.objects.none()
-        return Presupuesto.objects.filter(user=user).order_by('-id')
+        return Presupuesto.objects.filter(user=self.request.user).order_by('-id')
     
-    #                 "plan_ahorro": {
-    #     "cantidad": 10000.0,
-    #     "porcentaje_ingresos": 0.14285714285714288
-    # },
-    # "recomendaciones": [
-    #     "Reduce los gastos de transporte",
-    #     "Busca formas de incrementar el ingreso"
-    # ],
-    # "distribucion": {
-    #     "Transporte": 6700.0,
-    #     "Transporte 2": 6700.0
-    # }
     @swagger_auto_schema(
         operation_summary="Crear plan de presupuesto",
         responses={
@@ -133,26 +118,36 @@ class ListCreatePresupuestoView(ListCreateAPIView):
         }
     )
     def post(self, request):
-        serializer = PresupuestoSerializer(data=request.data)
-        if not serializer.is_valid():
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        gastos_data = request.data.pop('gastos', [])
 
-        gastos = Gasto.objects.filter(user=request.user)
-        presupuesto = serializer.save(user=request.user)
-        presupuesto.gastos.set(gastos)
+        with transaction.atomic():
+            serializer = PresupuestoSerializer(data=request.data)
+            if not serializer.is_valid():
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-        payload = PresupuestoSerializer(presupuesto).data
-        # payload.pop('plan')
-        try:
-            url = f"{settings.API_AI}/budget/plan"
-            response = requests.post(url, json=payload, timeout=20)
-            response.raise_for_status()
-        except requests.RequestException as e:
-            presupuesto.delete()  # roll back si falla
-            return Response({"error": "Error al contactar API externa", "detalle": str(e)},
-                            status=status.HTTP_502_BAD_GATEWAY)
-        presupuesto.plan = response.json()
-        presupuesto.save()
+            gastos_instances = []
+            for gasto_data in gastos_data:
+                gasto_serializer = GastoSerializer(data=gasto_data)
+                if not gasto_serializer.is_valid():
+                    return Response(gasto_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+                gasto = gasto_serializer.save(user=request.user)
+                gastos_instances.append(gasto)
+
+            presupuesto = serializer.save(user=request.user)
+            presupuesto.gastos.set(gastos_instances)
+
+            payload = PresupuestoSerializer(presupuesto).data
+            try:
+                url = f"{settings.API_AI}/budget/plan"
+                response = requests.post(url, json=payload, timeout=20)
+                response.raise_for_status()
+            except requests.RequestException as e:
+                raise transaction.TransactionManagementError(
+                    f"Error al contactar API externa: {str(e)}"
+                )
+
+            presupuesto.plan = response.json()
+            presupuesto.save()
 
         return Response(presupuesto.plan, status=status.HTTP_201_CREATED)
 
