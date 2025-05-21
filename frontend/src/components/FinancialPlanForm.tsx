@@ -104,8 +104,8 @@ export default function FinancialPlanForm() {
     };
 
     return (
-        <div className="bg-gray-900 text-white p-8 rounded-xl shadow-2xl max-w-3xl mx-auto mt-10">
-            <h2 className="text-4xl font-bold mb-6 text-cyan-400 text-center">Calculadora Financiera</h2>
+        <div className="bg-oscuro text-claro p-8 rounded-xl shadow-2xl max-w-3xl mx-auto mt-10">
+            <h2 className="text-4xl font-bold mb-6 text-azul text-center">Calculadora Financiera</h2>
 
             {!resultado ? (
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -115,7 +115,7 @@ export default function FinancialPlanForm() {
                             type="number"
                             value={ingresos}
                             onChange={(e) => setIngresos(parseFloat(e.target.value))}
-                            className="w-full px-4 py-2 bg-white text-black rounded"
+                            className="w-full px-4 py-2 bg-claro text-oscuro rounded"
                             required
                         />
                     </div>
@@ -126,19 +126,19 @@ export default function FinancialPlanForm() {
                             type="number"
                             value={metasAhorro}
                             onChange={(e) => setMetasAhorro(parseFloat(e.target.value))}
-                            className="w-full px-4 py-2 bg-white text-black rounded"
+                            className="w-full px-4 py-2 bg-claro text-oscuro rounded"
                             required
                         />
                     </div>
 
                     <div>
-                        <h3 className="text-lg font-semibold text-cyan-300 mb-2">📦 Gastos</h3>
+                        <h3 className="text-lg font-semibold text-claro mb-2">📦 Gastos</h3>
                         {gastos.map((gasto, index) => (
-                            <div key={index} className="bg-gray-800 p-4 rounded mb-3 space-y-2">
+                            <div key={index} className="bg-gray-700 p-4 rounded mb-3 space-y-2">
                                 <select
                                     value={gasto.categoria}
                                     onChange={(e) => handleChangeGasto(index, "categoria", e.target.value)}
-                                    className="w-full px-3 py-2 bg-white text-black rounded"
+                                    className="w-full px-3 py-2 bg-claro text-oscuro rounded"
                                     required
                                 >
                                     <option value="">Selecciona una categoría</option>
@@ -153,14 +153,14 @@ export default function FinancialPlanForm() {
                                     placeholder="Descripción"
                                     value={gasto.descripcion}
                                     onChange={(e) => handleChangeGasto(index, "descripcion", e.target.value)}
-                                    className="w-full px-3 py-2 bg-white text-black rounded"
+                                    className="w-full px-3 py-2 bg-claro text-oscuro rounded"
                                 />
                                 <input
                                     type="number"
                                     placeholder="Monto"
                                     value={gasto.monto}
                                     onChange={(e) => handleChangeGasto(index, "monto", e.target.value)}
-                                    className="w-full px-3 py-2 bg-white text-black rounded"
+                                    className="w-full px-3 py-2 bg-claro text-oscuro rounded"
                                     required
                                 />
                             </div>
@@ -168,7 +168,7 @@ export default function FinancialPlanForm() {
                         <button
                             type="button"
                             onClick={handleAddGasto}
-                            className="text-sm text-cyan-400 hover:underline"
+                            className="text-sm text-blue-400 hover:underline"
                         >
                             + Agregar otro gasto
                         </button>
@@ -177,14 +177,14 @@ export default function FinancialPlanForm() {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-2 px-4 rounded"
+                        className="bg-azul hover:bg-blue-600 text-claro font-semibold py-2 px-4 rounded"
                     >
                         {loading ? "Calculando..." : "Calcular plan"}
                     </button>
                 </form>
             ) : (
-                <div className="bg-white text-black p-6 rounded-lg mt-6">
-                    <h3 className="text-2xl font-bold text-cyan-600 mb-4">🧾 Resultado</h3>
+                <div className="bg-claro text-oscuro p-6 rounded-lg mt-6">
+                    <h3 className="text-2xl font-bold text-azul mb-4">🧾 Resultado</h3>
                     <p><strong>Ingresos totales:</strong> ${ingresos}</p>
                     <p><strong>Gastos totales:</strong> ${resultado.gastos_totales}</p>
                     <p><strong>Saldo disponible:</strong> ${resultado.saldo_disponible}</p>
@@ -221,7 +221,7 @@ export default function FinancialPlanForm() {
 
                     <button
                         onClick={handleReset}
-                        className="mt-6 bg-gray-900 hover:bg-gray-800 text-white py-2 px-4 rounded"
+                        className="mt-6 bg-azul hover:bg-blue-600 text-claro py-2 px-4 rounded"
                     >
                         🔁 Calcular de nuevo
                     </button>
