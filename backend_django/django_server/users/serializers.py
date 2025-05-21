@@ -33,6 +33,13 @@ class CustomUserSerializer(serializers.ModelSerializer):
         instance.save()
         return instance
     
+    def create(self, validated_data):
+        password = validated_data.pop('password')
+        user = CustomUser(**validated_data)
+        user.set_password(password) 
+        user.save()
+        return user
+
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):

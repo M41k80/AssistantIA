@@ -1,4 +1,5 @@
 import requests
+import pprint
 from django.conf import settings
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import IsAuthenticated
@@ -78,7 +79,19 @@ class ListCreatePresupuestoView(ListCreateAPIView):
         if user.is_anonymous:
             return Presupuesto.objects.none()
         return Presupuesto.objects.filter(user=user).order_by('-id')
-
+    
+    #                 "plan_ahorro": {
+    #     "cantidad": 10000.0,
+    #     "porcentaje_ingresos": 0.14285714285714288
+    # },
+    # "recomendaciones": [
+    #     "Reduce los gastos de transporte",
+    #     "Busca formas de incrementar el ingreso"
+    # ],
+    # "distribucion": {
+    #     "Transporte": 6700.0,
+    #     "Transporte 2": 6700.0
+    # }
     @swagger_auto_schema(
         operation_summary="Crear plan de presupuesto",
         responses={
@@ -87,20 +100,24 @@ class ListCreatePresupuestoView(ListCreateAPIView):
                 schema=openapi.Schema(
                     type=openapi.TYPE_OBJECT,
                     properties={
-                        "plan": openapi.Schema(
+                        "plan_ahorro": openapi.Schema(
                             type=openapi.TYPE_OBJECT,
                             properties={
-                                "plan_ahorro": openapi.Schema(
-                                    type=openapi.TYPE_OBJECT
-                                ),
-                                "recomendaciones_reducir_gastos": openapi.Schema(
-                                    type=openapi.TYPE_OBJECT
-                                ),
-                                "sugerencias_distribucion_presupuesto": openapi.Schema(
-                                    type=openapi.TYPE_OBJECT
-                                ),
+                                "cantidad": openapi.Schema(type=openapi.TYPE_NUMBER),
+                                "porcentaje_ingresos": openapi.Schema(type=openapi.TYPE_NUMBER)
                             }
-                        )
+                        ),
+                        "recomendaciones": openapi.Schema(
+                            type=openapi.TYPE_ARRAY,
+                            items=openapi.Schema(type=openapi.TYPE_STRING)  # Si son strings
+                        ),
+                        "distribucion": openapi.Schema(
+                            type=openapi.TYPE_OBJECT,
+                            properties={
+                                "Categoria 1": openapi.Schema(type=openapi.TYPE_NUMBER),
+                                "Categoria 2": openapi.Schema(type=openapi.TYPE_NUMBER)
+                            }
+                        ),
                     }
                 )
             ),
@@ -134,11 +151,10 @@ class ListCreatePresupuestoView(ListCreateAPIView):
             presupuesto.delete()  # roll back si falla
             return Response({"error": "Error al contactar API externa", "detalle": str(e)},
                             status=status.HTTP_502_BAD_GATEWAY)
-
-        presupuesto.plan = response.json().get("plan_presupuesto", "Sin plan generado.")
+        presupuesto.plan = response.json()
         presupuesto.save()
 
-        return Response({"plan": presupuesto.plan}, status=status.HTTP_201_CREATED)
+        return Response(presupuesto.plan, status=status.HTTP_201_CREATED)
 
 
 class RetrieveUpdateDestroyPresupuestoView(RetrieveUpdateDestroyAPIView):
