@@ -4,49 +4,60 @@ import { Footer } from "@/components/footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg">
+    <div className="min-h-screen flex flex-col bg-white">
       <Navbar />
 
-      
-      <section className="bg-gradient-to-b from-neutral-300 to-neutral-100 rounded-b-[150px] py-20 px-4 text-center ">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold mb-8">
-            Un asistente. Todas tus soluciones.
+
+      <section className="bg-gradient-to-b from-gray-400 to-gray-100 rounded-b-[80px] py-30 px-6 text-center shadow-inner">
+        <div className="max-w-5xl mx-auto py-32 text-center">
+          <h1 className="text-5xl md:text-6xl font-extrabold mb-12 leading-tight tracking-tight text-gray-900">
+            Un asistente. Todas las soluciones.
             <br />
-            Impulsá tu negocio con IA.
+            <span className="text-gray-900">Impulsá tu negocio con IA.</span>
           </h1>
-          <Button size="lg" className="px-8 py-6 text-lg rounded-md">
-            Comencemos
+          <Button
+            size="lg"
+            className="px-10 py-6 text-xl rounded-xl shadow-lg bg-blue-500 hover:bg-blue-600 text-white transition duration-300 ease-in-out"
+          ><strong>
+              🚀 Comencemos
+            </strong>
+
           </Button>
         </div>
       </section>
 
-      
+
+
       <section className="py-16 px-4 text-center">
-        <h2 className="text-2xl md:text-3xl font-semibold max-w-2xl mx-auto">
+        <h2 className="text-2xl md:text-3xl font-semibold max-w-2xl mx-auto text-gray-800">
           Organizá tu día con inteligencia
           <br />y simplificá tu trabajo real
         </h2>
       </section>
 
-      
-      <section className="py-8 px-4">
-        <div className="relative max-w-6xl mx-auto">
-          <div className="flex justify-center mb-12">
-            <div className="bg-white px-6 py-2 rounded-full shadow-md rotate-3 relative z-10">
-              <span className="text-lg font-medium">Servicios</span>
+
+      <section className="py-24 px-6 bg-white">
+        <div className="relative max-w-7xl mx-auto">
+
+          <div className="flex items-center justify-center mb-20 relative">
+            <div className="bg-blue-100 text-blue-800 px-6 py-2 rounded-full shadow-md relative z-10 text-lg font-semibold tracking-wide -rotate-12">
+              Servicios
             </div>
-            <div className="absolute top-1/2 left-0 right-0 h-px bg-neutral-200"></div>
+            <div className="absolute top-1/2 left-0 right-0 h-px bg-neutral-200 z-0"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            
-            <div className="text-center">
-              <div className="flex justify-center mb-4">
-                <div className="bg-neutral-100 p-4 rounded-full">
+
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+
+            {[
+              {
+                title: "Email Marketing con IA",
+                desc: "Creá campañas en segundos con IA. Solo escribe lo que quieres comunicar y listo.",
+                icon: (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-8 w-8"
+                    className="h-8 w-8 text-blue-600"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -57,21 +68,15 @@ export default function Home() {
                     <rect x="2" y="4" width="20" height="16" rx="2" />
                     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                   </svg>
-                </div>
-              </div>
-              <h3 className="font-bold mb-2">Email Marketing con IA</h3>
-              <p className="text-sm text-neutral-600">
-                Creá campañas en segundos con IA. Solo decí qué querés comunicar y listo.
-              </p>
-            </div>
-
-            
-            <div className="text-center">
-              <div className="flex justify-center mb-4">
-                <div className="bg-neutral-100 p-4 rounded-full">
+                ),
+              },
+              {
+                title: "Gestión de Tareas Inteligente",
+                desc: "Organizá tus tareas de forma simple. La IA prioriza lo importante por vos.",
+                icon: (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-8 w-8"
+                    className="h-8 w-8 text-green-600"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -83,21 +88,15 @@ export default function Home() {
                     <path d="M18 20V4" />
                     <path d="M6 20v-6" />
                   </svg>
-                </div>
-              </div>
-              <h3 className="font-bold mb-2">Gestión de Tareas Inteligente</h3>
-              <p className="text-sm text-neutral-600">
-                Organizá tus tareas de forma simple. La IA prioriza lo importante por vos.
-              </p>
-            </div>
-
-            
-            <div className="text-center">
-              <div className="flex justify-center mb-4">
-                <div className="bg-neutral-100 p-4 rounded-full">
+                ),
+              },
+              {
+                title: "Control de Gastos",
+                desc: "Visualizá ingresos, egresos y porcentajes. Recibí consejos para ahorrar mejor.",
+                icon: (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-8 w-8"
+                    className="h-8 w-8 text-purple-600"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -108,21 +107,15 @@ export default function Home() {
                     <path d="M3 3v18h18" />
                     <path d="m19 9-5 5-4-4-3 3" />
                   </svg>
-                </div>
-              </div>
-              <h3 className="font-bold mb-2">Control de Gastos</h3>
-              <p className="text-sm text-neutral-600">
-                Visualizá ingresos, egresos y porcentajes. Recibí consejos para ahorrar mejor.
-              </p>
-            </div>
-
-            
-            <div className="text-center">
-              <div className="flex justify-center mb-4">
-                <div className="bg-neutral-100 p-4 rounded-full">
+                ),
+              },
+              {
+                title: "Scraping de Leads (Pro)",
+                desc: "Encontrá carreras de potenciales clientes. Segmentá y cuadrá en tus campañas.",
+                icon: (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-8 w-8"
+                    className="h-8 w-8 text-pink-600"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -134,16 +127,28 @@ export default function Home() {
                     <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
                     <path d="M2 12h20" />
                   </svg>
+                ),
+              },
+            ].map((item, idx) => (
+              <div
+                key={idx}
+                className="bg-neutral-50 p-8 rounded-2xl shadow-md hover:shadow-lg transition duration-300 text-center"
+              >
+                <div className="flex justify-center mb-6">
+                  <div className="bg-white p-4 rounded-full shadow">
+                    {item.icon}
+                  </div>
                 </div>
+                <h3 className="text-xl font-semibold mb-3 text-gray-900">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-neutral-600">{item.desc}</p>
               </div>
-              <h3 className="font-bold mb-2">Scraping de Leads (Pro)</h3>
-              <p className="text-sm text-neutral-600">
-                Encontrá carreras de potenciales clientes. Segmentá y cuadrá en tus campañas.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
+
 
       <div className="flex-grow"></div>
 

@@ -1,6 +1,6 @@
 import FinancialPlanForm from "@/components/FinancialPlanForm";
-import { Sidebar } from "@/components/Sidebar";
-import ProfileHeader from "@/components/ProfileHeader";
+import { Sidebar } from "@/components/Sidebar/Sidebar";
+import ProfileHeader from "@/components/ProfileHeader/ProfileHeader";
 
 export default function FinanzasPage() {
   return (
