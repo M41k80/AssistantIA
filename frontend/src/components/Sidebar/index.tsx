@@ -59,7 +59,7 @@ export function Sidebar() {
       <button className="p-2 rounded-full cursor-pointer transform transition-transform duration-300 hover:scale-130">
             <Image
               src="/logout-icon.svg"
-              alt="budget"
+              alt="logout"
               width={30}
               height={30}
               className="text-white/80 hover:text-white transition-colors"
