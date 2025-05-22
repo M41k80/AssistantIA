@@ -1,6 +1,4 @@
 "use client";
-
-import react from "react";
 import { X, ArrowLeft } from "lucide-react";
 
 import { useState, useEffect } from "react";
@@ -32,7 +30,7 @@ const RegisterModal = ({ onClose, onBack }: RegisterModalProps) => {
   }, [user, router]);
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-white flex items-center justify-center z-50">
       <div className="bg-[#3A3B45] text-white rounded-lg w-full max-w-md p-6 relative">
         <button
           onClick={onBack}

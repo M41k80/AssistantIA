@@ -1,6 +1,6 @@
 import React from 'react'
-import { Sidebar } from "@/components/Sidebar"
-import ProfileHeader from '@/components/ProfileHeader'
+import { Sidebar } from "@/components/Sidebar/Sidebar"
+import ProfileHeader from '@/components/ProfileHeader/ProfileHeader'
 
 const DashboardPage = () => {
     return (
