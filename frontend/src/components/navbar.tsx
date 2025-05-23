@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
-import LoginModal  from "@/components/modals/LoginModal";
+import LoginModal from "@/components/modals/LoginModal";
 import RegisterModal from "@/components/modals/RegisterModal";
 
 
@@ -17,8 +18,16 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link href="/" className="flex-shrink-0 flex items-center">
-              <span className="text-xl font-bold">EmailPro</span>
+            <Link href="/" className="flex-shrink-0 flex items-center space-x-2">
+              <Image
+                src="/assistantia.png"
+                alt="AssistantIA Logo"
+                width={60} 
+                height={60}
+                className="rounded-md" 
+                priority
+              />
+              <span className="text-lg font-semibold text-gray-800">AssistantIA</span>
             </Link>
           </div>
 
@@ -48,33 +57,33 @@ export function Navbar() {
             >
               Iniciar sesión
             </button>
-          <button
-            onClick={() => setShowRegisterModal(true)}
-            className="text-sm font-medium bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors"
-          >
-            Registrarse
-          </button>
+            <button
+              onClick={() => setShowRegisterModal(true)}
+              className="text-sm font-medium bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors"
+            >
+              Registrarse
+            </button>
           </nav>
 
           {showLoginModal && (
-          <LoginModal
-            onClose={() => setShowLoginModal(false)}
-            onRegister={() => {
-              setShowLoginModal(false)
-              setShowRegisterModal(true)
-            }}
-          />
-        )}
+            <LoginModal
+              onClose={() => setShowLoginModal(false)}
+              onRegister={() => {
+                setShowLoginModal(false)
+                setShowRegisterModal(true)
+              }}
+            />
+          )}
 
-        {showRegisterModal && (
-          <RegisterModal
-            onClose={() => setShowRegisterModal(false)}
-            onBack={() => {
-              setShowRegisterModal(false)
-              setShowLoginModal(true)
-            }}
-          />
-        )}
+          {showRegisterModal && (
+            <RegisterModal
+              onClose={() => setShowRegisterModal(false)}
+              onBack={() => {
+                setShowRegisterModal(false)
+                setShowLoginModal(true)
+              }}
+            />
+          )}
 
           {/* menu mobile*/}
           <div className="md:hidden flex items-center">
@@ -139,3 +148,7 @@ export function Navbar() {
     </header>
   );
 }
+
+
+
+
