@@ -1,7 +1,10 @@
 import React from 'react'
 import { Sidebar } from "@/components/Sidebar/Sidebar"
 import ProfileHeader from '@/components/ProfileHeader/ProfileHeader'
-import { Search, Bell, ChevronLeft, ChevronRight } from "lucide-react"
+import CalendarWidget from '@/components/CalendarWidget/CalendarWidget'
+import ChatBot from "@/components/ChatBot/ChatBot"
+
+
 
 const DashboardPage = () => {
     return (
@@ -19,67 +22,7 @@ const DashboardPage = () => {
           {/* Content */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8 text-black">
             {/* Calendar Card */}
-            <div className="bg-blue-50 rounded-xl p-4">
-              <div className="flex justify-between items-center mb-4">
-                <button className="text-gray-600">
-                  <ChevronLeft className="w-4 h-4" />
-                </button>
-                <h3 className="font-medium">September 2021</h3>
-                <button className="text-gray-600">
-                  <ChevronRight className="w-4 h-4" />
-                </button>
-              </div>
-
-              <div className="grid grid-cols-7 gap-1 text-center text-xs mb-2">
-                <div className="font-medium">SAN</div>
-                <div className="font-medium">MON</div>
-                <div className="font-medium">TUE</div>
-                <div className="font-medium">WED</div>
-                <div className="font-medium">THU</div>
-                <div className="font-medium">FRI</div>
-                <div className="font-medium">SAT</div>
-              </div>
-
-              <div className="grid grid-cols-7 gap-1 text-center text-sm">
-                {[
-                  { day: 1 },
-                  { day: 2 },
-                  { day: 3 },
-                  { day: 4 },
-                  { day: 5 },
-                  { day: 6 },
-                  { day: 7 },
-                  { day: 8 },
-                  { day: 9 },
-                  { day: 10 },
-                  { day: 11 },
-                  { day: 12 },
-                  { day: 13 },
-                  { day: 14 },
-                  { day: 15 },
-                  { day: 16 },
-                  { day: 17 },
-                  { day: 18 },
-                  { day: 19, active: true },
-                  { day: 20 },
-                  { day: 21 },
-                  { day: 22 },
-                  { day: 23 },
-                  { day: 24 },
-                  { day: 25 },
-                  { day: 26 },
-                  { day: 27 },
-                  { day: 28 },
-                  { day: 29 },
-                  { day: 30 },
-                  { day: 31 },
-                ].map((date, index) => (
-                  <div key={index} className={`py-1 ${date.active ? "bg-blue-500 text-white rounded-full" : ""}`}>
-                    {date.day}
-                  </div>
-                ))}
-              </div>
-            </div>
+            <CalendarWidget />
 
             {/* Gastos Card */}
             <div className="bg-blue-50 rounded-xl p-4">
@@ -215,7 +158,9 @@ const DashboardPage = () => {
               </p>
 
               <button className="bg-white text-black text-sm px-4 py-2 rounded-full">Empezá ahora</button>
+              
             </div>
+            <ChatBot />
           </div>
         </div>
       </div>

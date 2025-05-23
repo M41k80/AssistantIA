@@ -5,9 +5,11 @@ import { useEffect, useState } from 'react';
 import { Search, Bell } from 'lucide-react';
 import ProfileInfoModal from '@/components/modals/ProfileInfoModal';
 import ProfileEditModal from '@/components/modals/ProfileEditModal';
+import Image from 'next/image';
 
 const ProfileHeader = () => {
   const [userName, setUserName] = useState('Usuario');
+  // eslint-disable-next-line
   const [initials, setInitials] = useState('U');
   const [image, setImage] = useState<string | null>(null);
   const [infoModalOpen, setInfoModalOpen] = useState(false);
@@ -34,7 +36,7 @@ const ProfileHeader = () => {
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    window.location.href = '/login';
+    window.location.href = '/';
   };
 
   return (
@@ -50,15 +52,21 @@ const ProfileHeader = () => {
         <DropdownMenu.Trigger asChild>
           <button className="flex items-center space-x-2 rounded-4xl px-2 py-1 bg-gray-100 hover:bg-gray-200 text-4xl">
             {image ? (
-              <img
+              <Image
                 src={image}
                 alt="avatar"
+                width={32}
+                height={32}
                 className="w-8 h-8 rounded-full object-cover"
               />
             ) : (
-              <div className="w-8 h-8 rounded-full bg-orange-400 flex items-center justify-center text-white">
-                <span className="text-xs">{initials}</span>
-              </div>
+              <Image
+                src="/m41k80.ico"
+                alt="avatar por defecto"
+                width={32}
+                height={32}
+                className="w-8 h-8 rounded-full object-cover"
+              />
             )}
             <span className="text-sm font-medium text-black">{userName}</span>
             <svg
@@ -100,17 +108,17 @@ const ProfileHeader = () => {
       <ProfileInfoModal
         image={image}
         onImageChange={(e: React.ChangeEvent<HTMLInputElement>) => setImage(e.target.value)}
-        open={infoModalOpen} 
-        setOpen={setInfoModalOpen} 
+        open={infoModalOpen}
+        setOpen={setInfoModalOpen}
         onEditClick={() => {
           setInfoModalOpen(false);
           setEditModalOpen(true);
         }}
       />
 
-      <ProfileEditModal 
-        open={editModalOpen} 
-        setOpen={setEditModalOpen} 
+      <ProfileEditModal
+        open={editModalOpen}
+        setOpen={setEditModalOpen}
       />
     </div>
   );
