@@ -1,6 +1,6 @@
 import FinancialPlanForm from "@/components/FinancialPlanForm";
 import { Sidebar } from "@/components/Sidebar/Sidebar";
-import ProfileHeader from "@/components/ProfileHeader/ProfileHeader";
+// import ProfileHeader from "@/components/ProfileHeader/ProfileHeader";
 
 export default function FinanzasPage() {
   return (
@@ -8,7 +8,7 @@ export default function FinanzasPage() {
       <Sidebar />
       <div className="ml-16 p-4">
         <div className="bg-white rounded-3xl p-6 shadow-sm min-h-[calc(100vh-2rem)]">
-          {/* Content */}
+          
           <FinancialPlanForm />
         </div>
       </div>

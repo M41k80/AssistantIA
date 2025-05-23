@@ -30,7 +30,7 @@ export default function CalendarWidget() {
     }));
 
     return (
-        <div className="h-[400px] bg-white rounded-xl overflow-hidden shadow-sm">
+        <div className="h-[500px] bg-white rounded-xl overflow-hidden shadow-sm">
             <Calendar
                 localizer={localizer}
                 events={events}

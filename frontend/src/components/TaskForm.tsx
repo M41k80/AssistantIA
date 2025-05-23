@@ -64,7 +64,7 @@ export default function TaskForm() {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="bg-blue-50 rounded-xl p-6 col-span-2">
+        <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-6 col-span-2 shadow-md">
             <h3 className="font-bold text-lg mb-4">Crear Tarea</h3>
 
             <div className="grid grid-cols-2 gap-4 mb-4">

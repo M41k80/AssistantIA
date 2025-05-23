@@ -24,6 +24,7 @@
     "next": "^15.3.2",
     "react": "^19.0.0",
     "react-big-calendar": "^1.18.0",
+    "react-countdown-circle-timer": "^3.2.1",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.56.4",
     "recharts": "^2.15.3",
