@@ -3,6 +3,7 @@ import { Sidebar } from "@/components/Sidebar/Sidebar"
 import ProfileHeader from '@/components/ProfileHeader/ProfileHeader'
 import CalendarWidget from '@/components/CalendarWidget/CalendarWidget'
 import ChatBot from "@/components/ChatBot/ChatBot"
+import TaskForm from '@/components/TaskForm'
 
 
 
@@ -103,45 +104,8 @@ const DashboardPage = () => {
           {/* Create Task Section */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 text-black">
             {/* Task Card */}
-            <div className="bg-blue-50 rounded-xl p-6 col-span-2">
-              <h3 className="font-bold text-lg mb-4">Crear Tarea</h3>
-
-              <div className="grid grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label className="block font-bold text-sm text-black mb-1">Título</label>
-                  <input type="text" className="w-full p-2 border border-gray-300 rounded" />
-                </div>
-                <div>
-                  <label className="block font-bold text-sm text-black mb-1">Urgencia (en minutos)</label>
-                  <input type="text" className="w-full p-2 border border-gray-300 rounded" />
-                </div>
-              </div>
-
-              <div className="mb-4">
-                <label className="block font-bold text-sm text-black mb-1">Fecha de entrega</label>
-                <input type="text" className="w-full p-2 border border-gray-300 rounded" />
-              </div>
-
-              <div className="mb-4">
-                <label className="block font-bold text-sm text-black mb-1">Descripción</label>
-                <textarea className="w-full p-2 border border-gray-300 rounded" rows={3}></textarea>
-              </div>
-
-              <div className="mb-4">
-                <label className="block font-bold text-sm text-black mb-1">Urgencia</label>
-                <div className="relative pt-1">
-                  <div className="overflow-hidden h-2 text-xs flex rounded bg-gray-200">
-                    <div className="w-1/3 shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex justify-center">
-                <button className="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition-colors">
-                  Calcular Plan
-                </button>
-              </div>
-            </div>
+            <TaskForm />
+            
 
             {/* Promo Card */}
             <div className="bg-[#1E1E1E] text-white p-6 rounded-xl">
