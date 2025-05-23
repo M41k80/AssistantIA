@@ -19,7 +19,7 @@ const FloatingChat = () => {
         setLoading(true)
 
         try {
-            const response = await fetch("https://assistantia-20o5.onrender.com/chat/assist", {
+            const response = await fetch("https://assistant-90rv.onrender.com/chat/assist", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
