@@ -13,7 +13,7 @@ export default function EmailPage() {
                 <h1 className="text-2xl font-bold text-black">¡Vamos a crear tu próximo email con IA!</h1>
                 <ProfileHeader />
             </div>
-    
+            
             {/* Content */}
             <EmailGenerator />;
             </div>
