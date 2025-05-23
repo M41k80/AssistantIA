@@ -78,7 +78,7 @@ export default function ProfileEditModal({
                   value={form.nombre}
                   onChange={handleChange}
                   placeholder="Nombre"
-                  className="w-full p-2 border-b border-gray-400 bg-transparent focus:outline-none focus:border-gray-600"
+                  className="w-full p-2 border-b border-gray-400 bg-transparent focus:outline-none focus:border-gray-600 text-gray-600"
                 />
               </div>
             </div>
@@ -92,7 +92,7 @@ export default function ProfileEditModal({
                   value={form.apellidos}
                   onChange={handleChange}
                   placeholder="Apellidos"
-                  className="w-full p-2 border-b border-gray-400 bg-transparent focus:outline-none focus:border-gray-600"
+                  className="w-full p-2 border-b border-gray-400 bg-transparent focus:outline-none focus:border-gray-600 text-gray-600"
                 />
               </div>
             </div>
@@ -104,7 +104,7 @@ export default function ProfileEditModal({
                   value={form.email}
                   onChange={handleChange}
                   placeholder="Correo electrónico"
-                  className="w-full p-2 border-b border-gray-400 bg-transparent focus:outline-none focus:border-gray-600"
+                  className="w-full p-2 border-b border-gray-400 bg-transparent focus:outline-none focus:border-gray-600 text-gray-600"
                 />
               </div>
             </div>
@@ -118,7 +118,7 @@ export default function ProfileEditModal({
                   value={form.sobreTi}
                   onChange={handleChange}
                   placeholder="Sobre ti"
-                  className="w-full p-2 border-b border-gray-400 bg-transparent focus:outline-none focus:border-gray-600 resize-none text-black"
+                  className="w-full p-2 border-b border-gray-400 bg-transparent focus:outline-none focus:border-gray-600 resize-none text-gray-600"
                 />
               </div>
             </div>
@@ -136,7 +136,7 @@ export default function ProfileEditModal({
                   value={form.password}
                   onChange={handleChange}
                   placeholder="Contraseña"
-                  className="w-full p-2 border-b border-gray-400 bg-transparent focus:outline-none focus:border-gray-600"
+                  className="w-full p-2 border-b border-gray-400 bg-transparent focus:outline-none focus:border-gray-600 text-gray-600"
                 />
               </div>
             </div>
@@ -151,7 +151,7 @@ export default function ProfileEditModal({
                   value={form.repeatPassword}
                   onChange={handleChange}
                   placeholder="Repetir contraseña"
-                  className="w-full p-2 border-b border-gray-400 bg-transparent focus:outline-none focus:border-gray-600"
+                  className="w-full p-2 border-b border-gray-400 bg-transparent focus:outline-none focus:border-gray-600 text-gray-600"
                 />
               </div>
 
@@ -163,7 +163,7 @@ export default function ProfileEditModal({
                     value={form.pais}
                     onChange={handleChange}
                     placeholder="País de residencia"
-                    className="w-full p-2 border-b border-gray-400 bg-transparent focus:outline-none focus:border-gray-600"
+                    className="w-full p-2 border-b border-gray-400 bg-transparent focus:outline-none focus:border-gray-600 text-gray-600"
                   />
                 </div>
               </div>
@@ -177,7 +177,7 @@ export default function ProfileEditModal({
                     value={form.idioma}
                     onChange={handleChange}
                     placeholder="Idioma"
-                    className="w-full p-2 border-b border-gray-400 bg-transparent focus:outline-none focus:border-gray-600"
+                    className="w-full p-2 border-b border-gray-400 bg-transparent focus:outline-none focus:border-gray-600 text-gray-600"
                   />
                 </div>
               </div>
