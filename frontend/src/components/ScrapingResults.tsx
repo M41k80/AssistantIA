@@ -21,7 +21,7 @@ export default function ScrapeResultsViewer() {
         setError(null)
 
         try {
-            const res = await fetch('http://localhost:8000/scraper/upload', {
+            const res = await fetch('https://assistant-90rv.onrender.com/scraper/upload', {
                 method: 'POST',
                 body: formData,
             })

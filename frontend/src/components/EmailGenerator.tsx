@@ -21,7 +21,7 @@ const EmailGenerator = () => {
     try {
       setLoading(true);
       const { data } = await axios.post(
-        "https://assistantia-20o5.onrender.com/emails/generate-email",
+        "https://assistant-90rv.onrender.com/emails/generate-email",
         {
           nombre_negocio: nombreNegocio,
           producto,

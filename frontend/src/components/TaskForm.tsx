@@ -24,7 +24,7 @@ export default function TaskForm() {
         }
 
         try {
-            const res = await fetch('https://assistantia-20o5.onrender.com/tasks/prioritize', {
+            const res = await fetch('https://assistant-90rv.onrender.com/tasks/prioritize', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ task, eventos: [] }),

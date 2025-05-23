@@ -70,7 +70,7 @@ export default function FinancialPlanForm() {
 
     try {
       const res = await fetch(
-        `https://assistantia-20o5.onrender.com/budget/plan`,
+        `https://assistant-90rv.onrender.com/budget/plan`,
         {
           method: "POST",
           headers: {

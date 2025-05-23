@@ -9,7 +9,6 @@ import GastosPieChart from '@/components/GastosPieChart'
 import PromoCard from '@/components/PromoCard'
 
 
-
 const DashboardPage = () => {
   return (
     <div className="min-h-screen bg-black">
@@ -19,7 +18,8 @@ const DashboardPage = () => {
         <div className="bg-white rounded-3xl p-6 shadow-sm min-h-[calc(100vh-2rem)]">
           {/* Header */}
           <div className="flex justify-between items-center mb-10">
-            <h1 className="text-2xl font-bold text-black">Hola! listo para crear tu campaña?</h1>
+            <h1 className="text-2xl font-bold text-black">Hola! Soy tu <strong className='text-gray-600'>Assitant</strong><strong className='text-blue-500'>IA</strong>👋</h1>
+            
             <ProfileHeader />
           </div>
 

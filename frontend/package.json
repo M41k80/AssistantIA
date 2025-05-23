@@ -22,6 +22,7 @@
     "jspdf": "^3.0.1",
     "lucide-react": "^0.511.0",
     "next": "^15.3.2",
+    "playwright": "^1.52.0",
     "react": "^19.0.0",
     "react-big-calendar": "^1.18.0",
     "react-countdown-circle-timer": "^3.2.1",
