@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   description:
     "AssistantIA es tu asistente inteligente todo en uno impulsado por IA. Gestiona tareas, automatiza emails, realiza scraping de leads, controla tus gastos y más desde una sola plataforma.",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/assistantia.png",
     shortcut: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     description:
       "Simplifica tu día a día con IA: tareas, correos, scraping, gastos y más con AssistantIA.",
     images: ["/assistantia-preview.png"],
-    creator: "@tuUsuarioTwitter", // opcional
+    creator: "@tuUsuarioTwitter", 
   },
 };
 
