@@ -29,6 +29,9 @@ export default function FinancialPlanForm() {
     const [resultado, setResultado] = useState<any>(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
+    // eslint-disable-next-line
+    const [historial, setHistorial] = useState<any[]>([]);
+    
 
     const handleAddGasto = () => {
         setGastos([...gastos, { categoria: "", descripcion: "", monto: 0 }]);
