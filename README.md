@@ -48,7 +48,7 @@
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/tuusuario/assistantia.git
+git clone https://github.com/M41k80/assistantia.git
 
 # Instalar dependencias
 cd assistantia
